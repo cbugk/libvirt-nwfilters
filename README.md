@@ -6,6 +6,9 @@ These are for my homelab thinkering, use at your own peril.
 (Tested on Fedora 36 Server Edition)
 
 The `redifine-nwfilters.sh` script takes one argument which is the directory to recursively find and define filters.
+```shell
+sudo src/redefine-nwfilters.sh src/nwfilters
+```
 
 Summary:
 * Script requires use of sudo or a user with appropiate priveledges/groups to manage libvirt.
@@ -21,7 +24,7 @@ Shortcomings:
 
 ### Subnets
 
-There are reject, accept, drop rules which are used in a hierarchy to provide granulization.
+Three types of rules are used in a hierarchy to provide granulization.
 ```
 DROP > ACCEPT > REJECT
 ```
@@ -35,4 +38,4 @@ A rough approach, but works for my simple case.
 
 ### Ports
 
-Ports follow the same mantra as subnets. However, due to unused parameters I had to comment out port "filterref"s except for `port-out-reject`, which is used for blocking ports 0-1023 and 9090 (Cockpit) on gatewway (a.k.a. hypervisor) to the guest machine.
+Ports follow the same mantra as subnets. However, due to unused parameter errors, I had to comment out port "filterref"s except for `port-out-reject`, which is used for blocking ports 0-1023 and 9090 (Cockpit) on gateway (a.k.a. hypervisor) to the guest machine.
