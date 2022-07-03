@@ -1,0 +1,30 @@
+<filterref filter='homelab-isolation'>
+        <!-- Specify IP for clean-traffic-->
+        <parameter name='IP' value='10.20.30.11'/>
+
+        <!-- Reject Private IP by default -->
+        <parameter name='SUBNET_REJECT_IP' value='10.0.0.0'/>
+        <parameter name='SUBNET_REJECT_MASK' value='255.0.0.0'/>
+        <parameter name='SUBNET_REJECT_IP' value='172.16.0.0'/>
+        <parameter name='SUBNET_REJECT_MASK' value='255.240.0.0'/>
+        <parameter name='SUBNET_REJECT_IP' value='192.168.0.0'/>
+        <parameter name='SUBNET_REJECT_MASK' value='255.255.0.0'/>
+        <!-- Accept NAT-local addresses -->
+        <parameter name='SUBNET_ACCEPT_IP' value='10.20.30.0'/>
+        <parameter name='SUBNET_ACCEPT_MASK' value='255.255.255.0'/>
+        <!-- Drop restricted infrastructure addresses -->
+        <!-- Happens to be covered by private rejects, nonetheless... -->
+        <parameter name='SUBNET_DROP_IP' value='192.168.100.0'/>
+        <parameter name='SUBNET_DROP_IP' value='192.168.200.0'/>
+        <parameter name='SUBNET_DROP_MASK' value='255.255.255.0'/>
+        <parameter name='SUBNET_DROP_MASK' value='255.255.255.0'/>
+
+        <!-- Reject ports onto the gateway (hypervisor) -->
+        <parameter name='PORT_OUT_REJECT_IP' value='10.20.30.1'/>
+        <!-- Well known ports -->
+        <parameter name='PORT_OUT_REJECT_START' value='0'/>
+        <parameter name='PORT_OUT_REJECT_END' value='1023'/>
+        <!-- Cockpit -->
+        <parameter name='PORT_OUT_REJECT_START' value='9090'/>
+        <parameter name='PORT_OUT_REJECT_END' value='9090'/>
+</filterref>

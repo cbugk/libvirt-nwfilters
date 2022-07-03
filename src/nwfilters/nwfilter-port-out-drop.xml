@@ -1,0 +1,7 @@
+<filter name='port-out-drop' chain='ipv4' priority='-700'>
+  <!-- Accept a list of outward port ranges for every IP -->
+  <rule action='drop' direction='out' prority='500'>
+    <all match='yes' dstipaddr='$PORT_OUT_DROP_IP[@1]' dstportstart='$PORT_OUT_DROP_START[@2]' dstportend='$PORT_OUT_DROP_END[@2]'/>
+  </rule>
+</filter>
+
