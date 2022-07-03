@@ -10,6 +10,12 @@ The `redifine-nwfilters.sh` script takes one argument which is the directory to 
 sudo src/redefine-nwfilters.sh src/nwfilters
 ```
 
+Having imported filters, add filterref to a VM. Sample: `src/filterref-template.xml`. Note that its content must be embedded into a NIC's `<interface> </interface>` block.
+
+---
+
+## About script
+
 Summary:
 * Script requires use of sudo or a user with appropiate priveledges/groups to manage libvirt.
 * Filename must conform to `nwfilter-*.xml`.
