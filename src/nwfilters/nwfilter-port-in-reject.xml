@@ -1,7 +1,10 @@
 <filter name='port-in-reject' chain='ipv4' priority='-700'>
   <!-- Reject a list of inward port ranges for every IP -->
-  <rule action='reject' direction='in' prority='500'>
-    <all match='yes' dstipaddr='$PORT_IN_REJECT_IP[@1]' dstportstart='$PORT_IN_REJECT_START[@2]' dstportend='$PORT_IN_REJECT_END[@2]'/>
+  <rule action='reject' direction='in' priority='266'>
+    <tcp dstipaddr='$PORT_IN_REJECT_IP[@1]' dstportstart='$PORT_IN_REJECT_START[@2]' dstportend='$PORT_IN_REJECT_END[@2]'/>
+  </rule>
+  <rule action='reject' direction='in' priority='266'>
+    <udp dstipaddr='$PORT_IN_REJECT_IP[@1]' dstportstart='$PORT_IN_REJECT_START[@2]' dstportend='$PORT_IN_REJECT_END[@2]'/>
   </rule>
 </filter>
 

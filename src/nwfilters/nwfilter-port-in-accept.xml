@@ -1,7 +1,10 @@
 <filter name='port-in-accept' chain='ipv4' priority='-700'>
   <!-- Accept a list of inward port ranges for every IP -->
-  <rule action='accept' direction='in' prority='500'>
-    <all match='yes' dstipaddr='$PORT_IN_ACCEPT_IP[@1]' dstportstart='$PORT_IN_ACCEPT_START[@2]' dstportend='$PORT_IN_ACCEPT_END[@2]'/>
+  <rule action='accept' direction='in' priority='233'>
+    <tcp dstipaddr='$PORT_IN_ACCEPT_IP[@1]' dstportstart='$PORT_IN_ACCEPT_START[@2]' dstportend='$PORT_IN_ACCEPT_END[@2]'/>
+  </rule>
+  <rule action='accept' direction='in' priority='233'>
+    <udp dstipaddr='$PORT_IN_ACCEPT_IP[@1]' dstportstart='$PORT_IN_ACCEPT_START[@2]' dstportend='$PORT_IN_ACCEPT_END[@2]'/>
   </rule>
 </filter>
 

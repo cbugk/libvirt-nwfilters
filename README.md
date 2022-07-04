@@ -54,3 +54,11 @@ A rough approach, but works for my simple case.
 ### Ports
 
 Ports follow the same mantra as subnets. However, due to unused parameter errors, I had to comment out port "filterref"s except for `port-out-reject`, which is used for blocking ports 0-1023 and 9090 (Cockpit) on gateway (a.k.a. hypervisor) to the guest machine.
+
+## About priority
+
+I have learned the hard way that smaller the priority number, higher the priority.
+
+By default a rule is given `priority='500'`, I have chosen to use `300, 333, 366` for subnet and `200, 233, 266` for port rules (to override subnets).
+
+Note that when rules have the same priority, whichever is written earlier (on top of the other) is prioritized.

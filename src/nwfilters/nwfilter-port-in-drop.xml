@@ -1,7 +1,10 @@
 <filter name='port-in-drop' chain='ipv4' priority='-700'>
   <!-- Drop a list of inward port ranges for every IP -->
-  <rule action='drop' direction='in' prority='500'>
-    <all match='yes' dstipaddr='$PORT_IN_DROP_IP[@1]' dstportstart='$PORT_IN_DROP_START[@2]' dstportend='$PORT_IN_DROP_END[@2]'/>
+  <rule action='drop' direction='in' priority='200'>
+    <tcp dstipaddr='$PORT_IN_DROP_IP[@1]' dstportstart='$PORT_IN_DROP_START[@2]' dstportend='$PORT_IN_DROP_END[@2]'/>
+  </rule>
+  <rule action='drop' direction='in' priority='200'>
+    <udp dstipaddr='$PORT_IN_DROP_IP[@1]' dstportstart='$PORT_IN_DROP_START[@2]' dstportend='$PORT_IN_DROP_END[@2]'/>
   </rule>
 </filter>
 

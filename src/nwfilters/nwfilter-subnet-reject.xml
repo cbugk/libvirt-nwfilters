@@ -1,12 +1,12 @@
 <filter name='subnet-reject' chain='ipv4' priority='-700'>
   <!-- Drop packages originating from the subnet -->
-  <rule action='reject' direction='in' priority='500'>
-    <all match='yes' srcipaddr='$SUBNET_REJECT_IP[@1]' srcipmask='$SUBNET_REJECT_MASK[@1]'/>
+  <rule action='reject' direction='in' priority='366'>
+    <all srcipaddr='$SUBNET_REJECT_IP[@1]' srcipmask='$SUBNET_REJECT_MASK[@1]'/>
   </rule>
 
   <!-- Drop packages sent to the subnet -->
-  <rule action='reject' direction='out' prority='500'>
-    <all match='yes' dstipaddr='$SUBNET_REJECT_IP[@1]' dstipmask='$SUBNET_REJECT_MASK[@1]'/>
+  <rule action='reject' direction='out' priority='366'>
+    <all dstipaddr='$SUBNET_REJECT_IP[@1]' dstipmask='$SUBNET_REJECT_MASK[@1]'/>
   </rule>
 </filter>
 

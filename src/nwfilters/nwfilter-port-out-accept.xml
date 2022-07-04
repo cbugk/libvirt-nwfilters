@@ -1,7 +1,10 @@
 <filter name='port-out-accept' chain='ipv4' priority='-700'>
   <!-- Accept a list of outward port ranges for every IP -->
-  <rule action='accept' direction='out' prority='500'>
-    <all match='yes' dstipaddr='$PORT_OUT_ACCEPT_IP[@1]' dstportstart='$PORT_OUT_ACCEPT_START[@2]' dstportend='$PORT_OUT_ACCEPT_END[@2]'/>
+  <rule action='accept' direction='out' priority='233'>
+    <tcp dstipaddr='$PORT_OUT_ACCEPT_IP[@1]' dstportstart='$PORT_OUT_ACCEPT_START[@2]' dstportend='$PORT_OUT_ACCEPT_END[@2]'/>
+  </rule>
+  <rule action='accept' direction='out' priority='233'>
+    <udp dstipaddr='$PORT_OUT_ACCEPT_IP[@1]' dstportstart='$PORT_OUT_ACCEPT_START[@2]' dstportend='$PORT_OUT_ACCEPT_END[@2]'/>
   </rule>
 </filter>
 

@@ -1,25 +1,16 @@
+<!-- rule priorities are sorted by ascending (less prior) -->
+
 <!-- comma separated list means single iterator -->
 <!-- semi-colon separated list means separate iterators -->
-<filter name='homelab-isolation' chain='ipv4' priority='-700'>
+<filter name='homelab-isolation' chain='ipv4'>
 	<!-- For spoofing prevention, a default filter -->
 	<!-- Takes: [ IP ] -->
 	<filterref filter='clean-traffic'/>
 
 
-	<!-- PRIORITY: 600-699 -->
-	<!-- Takes: [ SUBNET_REJECT_IP, SUBNET_REJECT_MASK ] -->
-	<filterref filter='subnet-reject' priority='600'/>
-
-	<!-- Takes: [ SUBNET_ACCEPT_IP, SUBNET_ACCEPT_MASK ] -->
-	<filterref filter='subnet-accept' priority='633'/>
-
-	<!-- Takes: [ SUBNET_DROP_IP, SUBNET_DROP_MASK ] -->
-	<filterref filter='subnet-drop' priority='666'/>
-
-
-	<!-- PRIORITY: 700-799 -->
+	<!-- PORT HIERARCHY -->
 	<!-- Takes: [ PORT_OUT_REJECT_IP; [ PORT_OUT_REJECT_START, PORT_OUT_REJECT_END ]] -->
-	<filterref filter='port-out-reject' priority='700'/>
+	<filterref filter='port-out-reject'/>
 	<!-- Takes: [ PORT_IN_REJECT_IP; [ PORT_IN_REJECT_START, PORT_IN_REJECT_END ]] -->
 	<!-- <filterref filter='port-in-reject' priority='700'/> -->
 
@@ -32,5 +23,16 @@
 	<!-- <filterref filter='port-out-drop' priority='766'/> -->
 	<!-- Takes: [ PORT_IN_DROP_IP; [ PORT_IN_DROP_START, PORT_IN_DROP_END ]] -->
 	<!-- <filterref filter='port-in-drop' priority='766'/> -->
+
+
+	<!-- SUBNET HIERARCHY -->
+	<!-- Takes: [ SUBNET_DROP_IP, SUBNET_DROP_MASK ] -->
+	<filterref filter='subnet-drop'/>
+
+	<!-- Takes: [ SUBNET_ACCEPT_IP, SUBNET_ACCEPT_MASK ] -->
+	<filterref filter='subnet-accept'/>
+
+	<!-- Takes: [ SUBNET_REJECT_IP, SUBNET_REJECT_MASK ] -->
+	<filterref filter='subnet-reject'/>
 </filter>
 

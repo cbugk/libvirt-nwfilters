@@ -1,12 +1,12 @@
 <filter name='subnet-drop' chain='ipv4' priority='-700'>
   <!-- Drop packages originating from the subnet -->
-  <rule action='drop' direction='in' priority='500'>
-    <all match='yes' srcipaddr='$SUBNET_DROP_IP[@1]' srcipmask='$SUBNET_DROP_MASK[@1]'/>
+  <rule action='drop' direction='in' priority='300'>
+    <all srcipaddr='$SUBNET_DROP_IP[@1]' srcipmask='$SUBNET_DROP_MASK[@1]'/>
   </rule>
 
   <!-- Drop packages sent to the subnet -->
-  <rule action='drop' direction='out' prority='500'>
-    <all match='yes' dstipaddr='$SUBNET_DROP_IP[@1]' dstipmask='$SUBNET_DROP_MASK[@1]'/>
+  <rule action='drop' direction='out' priority='300'>
+    <all dstipaddr='$SUBNET_DROP_IP[@1]' dstipmask='$SUBNET_DROP_MASK[@1]'/>
   </rule>
 </filter>
 
