@@ -10,7 +10,16 @@ The `redifine-nwfilters.sh` script takes one argument which is the directory to 
 sudo src/redefine-nwfilters.sh src/nwfilters
 ```
 
-Having imported filters, add filterref to a VM. Sample: `src/filterref-template.xml`. Note that its content must be embedded into a NIC's `<interface> </interface>` block.
+Having imported filters, add filterref to a VM. Sample: `src/filterref-template.xml`. Note that its content must be embedded into a NIC's `<interface>` block.
+
+E.g:
+```
+<interface type='network'>
+	<filterref filter='homelab-isolation'>
+		...
+	</filterref>
+</interface>
+```
 
 ---
 
